@@ -31,3 +31,8 @@ Now you should have your robot moving in the simulation.
 
 > [!tip]
 > You can know what every topic option does using this command: ign topic -h
+
+
+``` shell
+sudo apt install ros-foxy-gazebo-ros-pkgs
+```
