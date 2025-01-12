@@ -696,6 +696,23 @@
         <joint_name>CR2WR</joint_name>
         <joint_name>CL2WL</joint_name>
       </plugin>
+
+      <plugin name="gazebo_ros_right_wheel" filename="libgazebo_ros_force.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>100.0</updateRate>
+        <link_name>Wheel_Right</link_name>
+        <topicName>wheel_right_force</topicName>
+        <force_frame>link</force_frame>
+      </plugin>
+
+      <plugin name="gazebo_ros_left_wheel" filename="libgazebo_ros_force.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>100.0</updateRate>
+        <link_name>Wheel_Left</link_name>
+        <topicName>wheel_left_force</topicName>
+        <force_frame>link</force_frame>
+      </plugin>
+
     </model>
   </world>
 </sdf>
