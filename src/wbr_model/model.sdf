@@ -82,10 +82,10 @@
             </mesh>
           </geometry>
           <material>
-            <ambient>0.8 0.8 0.8 1</ambient>            <!-- 흰색 주변광 -->
-            <diffuse>1 1 1 1</diffuse>            <!-- 흰색 확산광 -->
-            <specular>0.5 0.5 0.5 1</specular>            <!-- 약간의 반사광 -->
-            <emissive>0 0 0 0</emissive>            <!-- 발광 없음 -->
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.5 0.5 0.5 1</specular>
+            <emissive>0 0 0 0</emissive>
           </material>
         </visual>
         <collision name="collision">
@@ -127,10 +127,10 @@
             </mesh>
           </geometry>
           <material>
-            <ambient>0.8 0.8 0.8 1</ambient>            <!-- 흰색 주변광 -->
-            <diffuse>1 1 1 1</diffuse>            <!-- 흰색 확산광 -->
-            <specular>0.5 0.5 0.5 1</specular>            <!-- 약간의 반사광 -->
-            <emissive>0 0 0 0</emissive>            <!-- 발광 없음 -->
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.5 0.5 0.5 1</specular>
+            <emissive>0 0 0 0</emissive>
           </material>
         </visual>
         <collision name="collision">
@@ -171,10 +171,10 @@
             </mesh>
           </geometry>
           <material>
-            <ambient>0.8 0.8 0.8 1</ambient>            <!-- 흰색 주변광 -->
-            <diffuse>1 1 1 1</diffuse>            <!-- 흰색 확산광 -->
-            <specular>0.5 0.5 0.5 1</specular>            <!-- 약간의 반사광 -->
-            <emissive>0 0 0 0</emissive>            <!-- 발광 없음 -->
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.5 0.5 0.5 1</specular>
+            <emissive>0 0 0 0</emissive>
           </material>
         </visual>
         <collision name="collision">
@@ -215,10 +215,10 @@
             </mesh>
           </geometry>
           <material>
-            <ambient>0.8 0.8 0.8 1</ambient>            <!-- 흰색 주변광 -->
-            <diffuse>1 1 1 1</diffuse>            <!-- 흰색 확산광 -->
-            <specular>0.5 0.5 0.5 1</specular>            <!-- 약간의 반사광 -->
-            <emissive>0 0 0 0</emissive>            <!-- 발광 없음 -->
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.5 0.5 0.5 1</specular>
+            <emissive>0 0 0 0</emissive>
           </material>
         </visual>
         <collision name="collision">
@@ -259,10 +259,10 @@
             </mesh>
           </geometry>
           <material>
-            <ambient>0.2 0.2 0.2 1</ambient>            <!-- 어두운 회색 주변광 -->
-            <diffuse>0 0 0 1</diffuse>            <!-- 검은색 확산광 -->
-            <specular>0.1 0.1 0.1 1</specular>            <!-- 적은 반사광 -->
-            <emissive>0 0 0 0</emissive>            <!-- 발광 없음 -->
+            <ambient>0.2 0.2 0.2 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0 0 0 0</emissive>
           </material>
         </visual>
         <collision name="collision">
@@ -309,10 +309,10 @@
             </mesh>
           </geometry>
           <material>
-            <ambient>0.8 0.8 0.8 1</ambient>            <!-- 흰색 주변광 -->
-            <diffuse>1 1 1 1</diffuse>            <!-- 흰색 확산광 -->
-            <specular>0.5 0.5 0.5 1</specular>            <!-- 약간의 반사광 -->
-            <emissive>0 0 0 0</emissive>            <!-- 발광 없음 -->
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.5 0.5 0.5 1</specular>
+            <emissive>0 0 0 0</emissive>
           </material>
         </visual>
         <collision name="collision">
@@ -353,10 +353,10 @@
             </mesh>
           </geometry>
           <material>
-            <ambient>0.8 0.8 0.8 1</ambient>            <!-- 흰색 주변광 -->
-            <diffuse>1 1 1 1</diffuse>            <!-- 흰색 확산광 -->
-            <specular>0.5 0.5 0.5 1</specular>            <!-- 약간의 반사광 -->
-            <emissive>0 0 0 0</emissive>            <!-- 발광 없음 -->
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.5 0.5 0.5 1</specular>
+            <emissive>0 0 0 0</emissive>
           </material>
         </visual>
         <collision name="collision">
@@ -397,10 +397,10 @@
             </mesh>
           </geometry>
           <material>
-            <ambient>0.8 0.8 0.8 1</ambient>            <!-- 흰색 주변광 -->
-            <diffuse>1 1 1 1</diffuse>            <!-- 흰색 확산광 -->
-            <specular>0.5 0.5 0.5 1</specular>            <!-- 약간의 반사광 -->
-            <emissive>0 0 0 0</emissive>            <!-- 발광 없음 -->
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.5 0.5 0.5 1</specular>
+            <emissive>0 0 0 0</emissive>
           </material>
         </visual>
         <collision name="collision">
@@ -441,10 +441,10 @@
             </mesh>
           </geometry>
           <material>
-            <ambient>0.2 0.2 0.2 1</ambient>            <!-- 어두운 회색 주변광 -->
-            <diffuse>0 0 0 1</diffuse>            <!-- 검은색 확산광 -->
-            <specular>0.1 0.1 0.1 1</specular>            <!-- 적은 반사광 -->
-            <emissive>0 0 0 0</emissive>            <!-- 발광 없음 -->
+            <ambient>0.2 0.2 0.2 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0 0 0 0</emissive>
           </material>
         </visual>
         <collision name="collision">
