@@ -701,7 +701,7 @@
         <alwaysOn>true</alwaysOn>
         <updateRate>100.0</updateRate>
         <link_name>Wheel_Right</link_name>
-        <topicName>wheel_right_force</topicName>
+        <namespace>wheel_right_force</namespace>
         <force_frame>link</force_frame>
       </plugin>
 
@@ -709,7 +709,23 @@
         <alwaysOn>true</alwaysOn>
         <updateRate>100.0</updateRate>
         <link_name>Wheel_Left</link_name>
-        <topicName>wheel_left_force</topicName>
+        <namespace>wheel_left_force</namespace>
+        <force_frame>link</force_frame>
+      </plugin>
+
+      <plugin name="gazebo_thigh_right" filename="libgazebo_ros_force.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>100.0</updateRate>
+        <link_name>Thigh_Active_Right</link_name>
+        <namespace>thigh_active_right_force</namespace>
+        <force_frame>link</force_frame>
+      </plugin>
+
+      <plugin name="gazebo_thigh_left" filename="libgazebo_ros_force.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>100.0</updateRate>
+        <link_name>Thigh_Active_Left</link_name>
+        <namespace>thigh_active_left_force</namespace>
         <force_frame>link</force_frame>
       </plugin>
 
