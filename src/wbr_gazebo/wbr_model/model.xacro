@@ -1,0 +1,196 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="wheel_biped_robot">
+
+  <xacro:macro name="material_macro" params="ambient diffuse specular">
+    <material>
+      <ambient>${ambient}</ambient>
+      <diffuse>${diffuse}</diffuse>
+      <specular>${specular}</specular>
+    </material>
+  </xacro:macro>
+
+  <xacro:macro name="link_macro" params="name visual_geometry collision_geometry mass origin inertia">
+    <link name="${name}">
+      <visual>
+        <geometry>
+         <xacro:insert_block>$(visual_geometry)</xacro:insert_block>
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <xacro:insert_block>$(collision_geometry)</xacro:insert_block>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="${mass}"/>
+        <origin xyz="${origin.xyz}" rpy="${origin.rpy}"/>
+        <inertia ixx="${inertia.ixx}" ixy="${inertia.ixy}" ixz="${inertia.ixz}"
+                 iyy="${inertia.iyy}" iyz="${inertia.iyz}" izz="${inertia.izz}"/>
+      </inertial>
+    </link>
+  </xacro:macro>
+
+  <!-- Define Mainbody -->
+  <xacro:call macro="link_macro"
+    name="Mainbody"
+    visual_geometry="&lt;mesh filename='meshes/MainBody_Visual.stl'/&gt;"
+    collision_geometry="&lt;mesh filename='meshes/MainBody_Collision.stl'/&gt;"
+    mass="1.41404421338"
+    origin="{xyz: '0.01819659659 -0.00024888409 0.03542269696', rpy: '0 0 0'}"
+    inertia="{ixx: '0.004191453724966', ixy: '0.000019611026617', ixz: '0.000183001274225',
+              iyy: '0.006619178754250', iyz: '0.000006399950187', izz: '0.007735669494723'}"/>
+
+  <!-- Define Thigh_Active_Right -->
+  <xacro:call macro="link_macro"
+    name="Thigh_Active_Right"
+    visual_geometry="&lt;mesh filename='meshes/ThighLink_Active_Right_Visual.stl'/&gt;"
+    collision_geometry="&lt;mesh filename='meshes/ThighLink_Active_Right_Collision.stl'/&gt;"
+    mass="0.04241994494"
+    origin="{xyz: '-0.04846902377 -0.00461143086 0.00204281842', rpy: '0 0 0'}"
+    inertia="{ixx: '0.000005006896996300', ixy: '-0.000006444247425260', ixz: '-0.000000846350964990',
+              iyy: '0.000048849855931520', iyz: '-0.000000404383743700', izz: '0.000049929410233640'}"/>
+
+  <!-- Define Thigh_Passive_Right -->
+  <xacro:call macro="link_macro"
+    name="Thigh_Passive_Right"
+    visual_geometry="&lt;mesh filename='meshes/ThighLink_Passive_Right_Visual.stl'/&gt;"
+    collision_geometry="&lt;mesh filename='meshes/ThighLink_Passive_Right_Collision.stl'/&gt;"
+    mass="0.03926139565"
+    origin="{xyz: '-0.07721916722 -0.01027201342 -0.00386042407', rpy: '0 0 0'}"
+    inertia="{ixx: '0.000005253535542220', ixy: '-0.000005957246863360', ixz: '0.000002247315833890',
+              iyy: '0.000060185494515380', iyz: '0.000000799056070920', izz: '0.000060398225116460'}"/>
+
+  <!-- Define Calf_Right -->
+  <xacro:call macro="link_macro"
+    name="Calf_Right"
+    visual_geometry="&lt;mesh filename='meshes/Calf_Link_Right_Visual.stl'/&gt;"
+    collision_geometry="&lt;mesh filename='meshes/Calf_Link_Right_Collision.stl'/&gt;"
+    mass="0.33823782393"
+    origin="{xyz: '0.16971091698 0.00392574726 0.00713537305', rpy: '0 0 0'}"
+    inertia="{ixx: '0.000108187868305990', ixy: '0.000005689137620610', ixz: '-0.000034348435846100',
+              iyy: '0.000849621316459050', iyz: '0.000000266268924720', izz: '0.000820314860808290'}"/>
+
+  <!-- Define Wheel_Right -->
+  <xacro:call macro="link_macro"
+    name="Wheel_Right"
+    visual_geometry="&lt;mesh filename='meshes/Wheel_Right_Visual.stl'/&gt;"
+    collision_geometry="&lt;cylinder radius='0.0762' length='0.030'/&gt;"
+    mass="0.21411770281"
+    origin="{xyz: '-0.00000761 0.48438625 -0.00000031', rpy: '0 0 0'}"
+    inertia="{ixx: '0.000334104602957420', ixy: '-0.0000000006922620', ixz: '-0.0000000000451200',
+              iyy: '0.000640742795079830', iyz: '0.0000000000059870', izz: '0.000334104655850370'}"/>
+
+  <!-- Define Thigh_Active_Left -->
+  <xacro:call macro="link_macro"
+    name="Thigh_Active_Left"
+    visual_geometry="&lt;mesh filename='meshes/ThighLink_Active_Left_Visual.stl'/&gt;"
+    collision_geometry="&lt;mesh filename='meshes/ThighLink_Active_Left_Collision.stl'/&gt;"
+    mass="0.04241994494"
+    origin="{xyz: '-0.04846903323 0.00461143087 0.00204282631', rpy: '0 0 0'}"
+    inertia="{ixx: '0.000005006895683980', ixy: '0.000006444245553680', ixz: '-0.000000846350231280',
+              iyy: '0.000048849838353730', iyz: '0.000000404385235010', izz: '0.000049929393964280'}"/>
+
+  <!-- Define Thigh_Passive_Left -->
+  <xacro:call macro="link_macro"
+    name="Thigh_Passive_Left"
+    visual_geometry="&lt;mesh filename='meshes/ThighLink_Passive_Left_Visual.stl'/&gt;"
+    collision_geometry="&lt;mesh filename='meshes/ThighLink_Passive_Left_Collision.stl'/&gt;"
+    mass="0.03926139565"
+    origin="{xyz: '-0.07721916722 0.01027201342 -0.00386042407', rpy: '0 0 0'}"
+    inertia="{ixx: '0.000005253535548320', ixy: '0.000005957246863210', ixz: '0.000002247315834350',
+              iyy: '0.000060185494514520', iyz: '-0.000000799056070960', izz: '0.000060398225109490'}"/>
+
+  <!-- Define Calf_Left -->
+  <xacro:call macro="link_macro"
+    name="Calf_Left"
+    visual_geometry="&lt;mesh filename='meshes/Calf_Link_Left_Visual.stl'/&gt;"
+    collision_geometry="&lt;mesh filename='meshes/Calf_Link_Left_Collision.stl'/&gt;"
+    mass="0.33823782393"
+    origin="{xyz: '0.1697107318 -0.00392577446 0.00713663078', rpy: '0 0 0'}"
+    inertia="{ixx: '0.000108187533749900', ixy: '-0.000005688744896090', ixz: '-0.000034349398689300',
+              iyy: '0.000849624615145120', iyz: '-0.000000272203467970', izz: '0.000820318285174880'}"/>
+
+  <!-- Define Wheel_Left -->
+  <xacro:call macro="link_macro"
+    name="Wheel_Left"
+    visual_geometry="&lt;mesh filename='meshes/Wheel_Left_Visual.stl'/&gt;"
+    collision_geometry="&lt;cylinder radius='0.0762' length='0.030'/&gt;"
+    mass="0.23711770281"
+    origin="{xyz: '-0.00000687 0.43740164 -0.00000028', rpy: '0 0 0'}"
+    inertia="{ixx: '0.000377169502363060', ixy: '-0.0000000006845310', ixz: '-0.0000000001146860',
+              iyy: '0.000723999028075260', iyz: '0.0000000000062050', izz: '0.000377169522061000'}"/>
+
+  <!-- Define joints -->
+  <joint name="B2TAR" type="revolute">
+    <parent link="Mainbody"/>
+    <child link="Thigh_Active_Right"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-1.2212" upper="0.518" effort="10.0" velocity="10.0"/>
+  </joint>
+
+  <joint name="TAR2CR" type="revolute">
+    <parent link="Thigh_Active_Right"/>
+    <child link="Calf_Right"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <joint name="CR2TPR" type="revolute">
+    <parent link="Calf_Right"/>
+    <child link="Thigh_Passive_Right"/>
+    <origin xyz="-0.106 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <joint name="TPR2B" type="revolute">
+    <parent link="Thigh_Passive_Right"/>
+    <child link="Mainbody"/>
+    <origin xyz="0 -0.081 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <joint name="CR2WR" type="revolute">
+    <parent link="Calf_Right"/>
+    <child link="Wheel_Right"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <joint name="B2TAL" type="revolute">
+    <parent link="Mainbody"/>
+    <child link="Thigh_Active_Left"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-1.2212" upper="0.518" effort="10.0" velocity="10.0"/>
+  </joint>
+
+  <joint name="TAL2CL" type="revolute">
+    <parent link="Thigh_Active_Left"/>
+    <child link="Calf_Left"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <joint name="CL2TPL" type="revolute">
+    <parent link="Calf_Left"/>
+    <child link="Thigh_Passive_Left"/>
+    <origin xyz="-0.106 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <joint name="TPL2B" type="revolute">
+    <parent link="Thigh_Passive_Left"/>
+    <child link="Mainbody"/>
+    <origin xyz="0 0.081 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <joint name="CL2WL" type="revolute">
+    <parent link="Calf_Left"/>
+    <child link="Wheel_Left"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+</robot>
