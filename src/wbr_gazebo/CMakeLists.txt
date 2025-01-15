@@ -19,14 +19,10 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
-find_package(sensor_msgs)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
+find_package(sensor_msgs REQUIRED)
 
 add_executable(wbr_state_talker src/wbr_state_talker.cpp)
 ament_target_dependencies(wbr_state_talker rclcpp std_msgs sensor_msgs)
-
 
 install(TARGETS
   wbr_state_talker
