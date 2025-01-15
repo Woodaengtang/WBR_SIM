@@ -486,13 +486,12 @@
       <joint name="B2TAR" type="revolute">
         <parent>Mainbody</parent>
         <child>Thigh_Active_Right</child>
-        <pose>0 0 0 0 0 0</pose>        <!-- 실제 위치로 설정 -->
+        <pose>0 0 0 0 0 0</pose>
         <axis>
-          <xyz>0 1 0</xyz>          <!-- 회전 축 설정 -->
+          <xyz>0 1 0</xyz>
           <limit>
             <lower>-1.2212</lower>
             <upper>0.518</upper>
-            <!--dissipation>0.001</dissipation-->
           </limit>
         </axis>
       </joint>
@@ -500,11 +499,10 @@
       <joint name="TAR2CR" type="revolute">
         <parent>Thigh_Active_Right</parent>
         <child>Calf_Right</child>
-        <pose>0 0 0 0 0 0</pose>        <!-- 실제 위치로 설정 -->
+        <pose>0 0 0 0 0 0</pose>
         <axis>
-          <xyz>0 1 0</xyz>          <!-- 회전 축 설정 -->
+          <xyz>0 1 0</xyz>
           <limit>
-            <!--dissipation>0.001</dissipation-->
           </limit>
         </axis>
       </joint>
@@ -512,11 +510,10 @@
       <joint name="CR2TPR" type="revolute">
         <parent>Calf_Right</parent>
         <child>Thigh_Passive_Right</child>
-        <pose>-0.106 0 0 0 0 0</pose>        <!-- 실제 위치로 설정 -->
+        <pose>-0.106 0 0 0 0 0</pose>
         <axis>
-          <xyz>0 1 0</xyz>          <!-- 회전 축 설정 -->
+          <xyz>0 1 0</xyz>
           <limit>
-            <!--dissipation>0.001</dissipation-->
           </limit>
         </axis>
       </joint>
@@ -524,11 +521,10 @@
       <joint name="TPR2B" type="revolute">
         <parent>Thigh_Passive_Right</parent>
         <child>Mainbody</child>
-        <pose>0 -0.081 0 0 0 0</pose>        <!-- 실제 위치로 설정 -->
+        <pose>0 -0.081 0 0 0 0</pose>
         <axis>
-          <xyz>0 1 0</xyz>          <!-- 회전 축 설정 -->
+          <xyz>0 1 0</xyz>
           <limit>
-            <!--dissipation>0.001</dissipation-->
           </limit>
         </axis>
       </joint>
@@ -536,11 +532,10 @@
       <joint name="CR2WR" type="revolute">
         <parent>Calf_Right</parent>
         <child>Wheel_Right</child>
-        <pose>0 0 0 0 0 0</pose>        <!-- 실제 위치로 설정 -->
+        <pose>0 0 0 0 0 0</pose>
         <axis>
-          <xyz>0 1 0</xyz>          <!-- 회전 축 설정 -->
+          <xyz>0 1 0</xyz>
           <limit>
-            <!--dissipation>0.001</dissipation-->
           </limit>
         </axis>
       </joint>
@@ -549,13 +544,12 @@
       <joint name="B2TAL" type="revolute">
         <parent>Mainbody</parent>
         <child>Thigh_Active_Left</child>
-        <pose>0 0 0 0 0 0</pose>        <!-- 실제 위치로 설정 -->
+        <pose>0 0 0 0 0 0</pose>
         <axis>
-          <xyz>0 1 0</xyz>          <!-- 회전 축 설정 -->
+          <xyz>0 1 0</xyz>
           <limit>
             <lower>-1.2212</lower>
             <upper>0.518</upper>
-            <!--dissipation>0.001</dissipation-->
           </limit>
         </axis>
       </joint>
@@ -563,11 +557,10 @@
       <joint name="TAL2CL" type="revolute">
         <parent>Thigh_Active_Left</parent>
         <child>Calf_Left</child>
-        <pose>0 0 0 0 0 0</pose>        <!-- 실제 위치로 설정 -->
+        <pose>0 0 0 0 0 0</pose>
         <axis>
-          <xyz>0 1 0</xyz>          <!-- 회전 축 설정 -->
+          <xyz>0 1 0</xyz>
           <limit>
-            <!--dissipation>0.001</dissipation-->
           </limit>
         </axis>
       </joint>
@@ -575,11 +568,10 @@
       <joint name="CL2TPL" type="revolute">
         <parent>Calf_Left</parent>
         <child>Thigh_Passive_Left</child>
-        <pose>-0.106 0 0 0 0 0</pose>        <!-- 실제 위치로 설정 -->
+        <pose>-0.106 0 0 0 0 0</pose>
         <axis>
-          <xyz>0 1 0</xyz>          <!-- 회전 축 설정 -->
+          <xyz>0 1 0</xyz>
           <limit>
-            <!--dissipation>0.001</dissipation-->
           </limit>
         </axis>
       </joint>
@@ -591,7 +583,6 @@
         <axis>
           <xyz>0 1 0</xyz>          
           <limit>
-            <!--dissipation>0.001</dissipation-->
           </limit>
         </axis>
       </joint>
@@ -603,7 +594,6 @@
         <axis>
           <xyz>0 1 0</xyz>
           <limit>
-            <!--dissipation>0.001</dissipation-->
           </limit>
         </axis>
       </joint>
