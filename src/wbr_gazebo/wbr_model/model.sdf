@@ -687,7 +687,8 @@
         <joint_name>CL2WL</joint_name>
       </plugin>
 
-      <plugin name="gazebo_ros_right_wheel" filename="libgazebo_ros_force.so">
+      <plugin name="gazebo_ros_right_wheel" 
+        filename="libgazebo_ros_force.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>100.0</updateRate>
         <link_name>Wheel_Right</link_name>
@@ -695,7 +696,8 @@
         <force_frame>link</force_frame>
       </plugin>
 
-      <plugin name="gazebo_ros_left_wheel" filename="libgazebo_ros_force.so">
+      <plugin name="gazebo_ros_left_wheel" 
+        filename="libgazebo_ros_force.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>100.0</updateRate>
         <link_name>Wheel_Left</link_name>
@@ -703,7 +705,8 @@
         <force_frame>link</force_frame>
       </plugin>
 
-      <plugin name="gazebo_thigh_right" filename="libgazebo_ros_force.so">
+      <plugin name="gazebo_thigh_right" 
+        filename="libgazebo_ros_force.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>100.0</updateRate>
         <link_name>Thigh_Active_Right</link_name>
@@ -711,11 +714,39 @@
         <force_frame>link</force_frame>
       </plugin>
 
-      <plugin name="gazebo_thigh_left" filename="libgazebo_ros_force.so">
+      <plugin name="gazebo_thigh_left" 
+        filename="libgazebo_ros_force.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>100.0</updateRate>
         <link_name>Thigh_Active_Left</link_name>
         <namespace>thigh_active_left_force</namespace>
+        <force_frame>link</force_frame>
+      </plugin>
+
+      <plugin name="gazebo_calf_right" 
+        filename="libgazebo_ros_force.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>100.0</updateRate>
+        <link_name>Calf_Right</link_name>
+        <namespace>calf_right_force</namespace>
+        <force_frame>link</force_frame>
+      </plugin>
+
+      <plugin name="gazebo_calf_left" 
+        filename="libgazebo_ros_force.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>100.0</updateRate>
+        <link_name>Calf_Left</link_name>
+        <namespace>calf_left_force</namespace>
+        <force_frame>link</force_frame>
+      </plugin>
+
+      <plugin name="gazebo_main_body" 
+        filename="libgazebo_ros_force.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>100.0</updateRate>
+        <link_name>Mainbody</link_name>
+        <namespace>main_body_force</namespace>
         <force_frame>link</force_frame>
       </plugin>
 
