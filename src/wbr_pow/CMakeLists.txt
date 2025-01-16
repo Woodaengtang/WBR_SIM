@@ -28,6 +28,9 @@ ament_target_dependencies(wbr_state_talker rclcpp std_msgs sensor_msgs)
 
 rosidl_generate_interfaces(wbr_pow
   "msg/WbrState.msg"
+  "msg/WbrControl.msg"
+  "msg/WbrComCal.msg"
+  "msg/WbrHR.msg"
   DEPENDENCIES std_msgs
 )
 

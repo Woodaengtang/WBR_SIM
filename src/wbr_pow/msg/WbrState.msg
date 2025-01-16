@@ -7,6 +7,6 @@
 #  * the yaw angular rate
 
 float64 theta
-float64 dot_theta
-float64 velocity
-float64 dot_psi
+float64 theta_dot
+float64 vel
+float64 psi_dot
