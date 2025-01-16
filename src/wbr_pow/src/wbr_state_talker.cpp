@@ -1,4 +1,4 @@
-#include "wbr_state_talker.hpp"
+#include "wbr_pow/wbr_state_talker.hpp"
 
 WbrStateTalker::WbrStateTalker() : Node("wbr_state_talker") {
   subscription_ = this->create_subscription<sensor_msgs::msg::JointState>(

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(wbr_gazebo)
+project(wbr_pow)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
@@ -17,16 +17,20 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
 
 add_executable(wbr_state_talker src/wbr_state_talker.cpp)
 ament_target_dependencies(wbr_state_talker rclcpp std_msgs sensor_msgs)
 
-install(TARGETS
-  wbr_state_talker
-  DESTINATION lib/wbr_gazebo)
+rosidl_generate_interfaces(wbr_pow
+  "msg/WbrState.msg"
+  DEPENDENCIES std_msgs
+)
+
 
 include_directories(
   include
