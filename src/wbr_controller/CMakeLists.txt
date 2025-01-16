@@ -22,6 +22,15 @@ find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
+add_executable(wbr_ekf src/ekf.cpp
+ament_target_dependencies(wbr_ekf rclcpp std_msgs sensor_msgs))
+
+add_executable(lqr_wheel_servo_controller src/lqr_wheel_servo_controller.cpp
+ament_target_dependencies(lqr_wheel_servo_controller rclcpp std_msgs sensor_msgs))
+
+add_executable(pid_hip_servo_controller src/pid_hip_servo_controller.cpp
+ament_target_dependencies(pid_hip_servo_controller rclcpp std_msgs sensor_msgs))
+
 include_directories(
   include/wbr_controller
   include/wbr_estimator

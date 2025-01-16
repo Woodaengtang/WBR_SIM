@@ -13,8 +13,8 @@ class EKF : public rclcpp::Node {
     private:
         Eigen::Matrix<float, 4, 4> P;                 // Covariance matrix
         Eigen::Matrix<float, 4, 4> P_pred;            // Predicted covariance
-        const Eigen::DiagonalMatrix<float, 8> R_cov;  // Measurement covariance
-        const Eigen::DiagonalMatrix<float, 4> Q_cov;  // Prediction covariance
+        static const Eigen::DiagonalMatrix<float, 8> R_cov;  // Measurement covariance
+        static const Eigen::DiagonalMatrix<float, 4> Q_cov;  // Prediction covariance
         Eigen::Matrix<float, 4, 4> F_mat;             // Jacobian of dynamic model
         Eigen::Matrix<float, 8, 4> H;                 // Jacobian of Observation model
         Eigen::Matrix<float, 4, 8> K_mat;             // Kalman Gain
@@ -27,12 +27,12 @@ class EKF : public rclcpp::Node {
         rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr sub_joint_;   // Joint state subscribed from gazebo wbr model
         rclcpp::Publisher<std_msgs::msg::WbrState>::SharedPtr pub_state_;           // Estimated state from extended Kalman filter published
 
-        void priori_state_estimation();
-        void calculate_priori_covariance();
-        void calculate_jacobian();
-        void calculate_kalman_gain();
-        bool posterior_state_estimation();
-        void calculate_posterior_covariance();
+        void priori_state_estimation();             //
+        void priori_covariance_computation();       //
+        void jacobian_computation();                //
+        void kalman_gain();                         //
+        bool posterior_state_estimation();          //
+        void posterior_covariance_computation();    //
 
     public:
         EKF();                      // Initialization of covariance and states
