@@ -16,7 +16,7 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 
 # find dependencies
-find_package(ament_cmake REQUIRED)
+find_package(Eigen3 3.3 REQUIRED)
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
@@ -33,7 +33,6 @@ rosidl_generate_interfaces(wbr_pow
   "msg/WbrHR.msg"
   DEPENDENCIES std_msgs
 )
-
 
 include_directories(
   include
