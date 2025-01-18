@@ -3,7 +3,8 @@
 
 #include <iostream>
 #include <vector>
-#include <Eigen/Dense>
+#include <eigen3/Eigen/Dense>
+// #include <Eigen/Dense>
 #include <chrono>
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
@@ -25,17 +26,21 @@
 
 class LqrVybController : public rclcpp::Node {
     private:
-        rclcpp::Subscription<std_msgs::msg::WbrControl>::SharedPtr sub_input_;      // Subscribing control input from gazebo joystick(Probably...)
-        rclcpp::Subscription<std_msgs::msg::WbrState>::SharedPtr sub_ekf_;          // Subscribing estimated states from ekf
-        rclcpp::Subscription<std_msgs::msg::WbrComCal>::SharedPtr sub_com_;         // Subscribing com and inertia tensor from com_calculator
+        rclcpp::Subscription<std_msgs::msg::WbrDesState>::SharedPtr sub_ref_;       // Subscribing desired state
+        rclcpp::Subscription<std_msgs::msg::WbrEstState>::SharedPtr sub_ekf_;       // Subscribing estimated states from ekf
+        rclcpp::Subscription<std_msgs::msg::WbrPitchEq>::SharedPtr sub_eq_;         // Subscribing equilbrium point from pow_core
+        rclcpp::Subscription<std_msgs::msg::WbrHR>::SharedPtr sub_hr_;              // Subscribing hr control input
+        
         rclcpp::Publisher<geometry_msgs::msg::Wrench>::SharedPtr pub_wheel_left_;   // Publishing left wheel motor's torque
         rclcpp::Publisher<geometry_msgs::msg::Wrench>::SharedPtr pub_wheel_right_;  // Publishing right wheel motor's torque
         rclcpp::Publisher<geometry_msgs::msg::Wrench>::SharedPtr pub_calf_left_;    // Publishing antitorque to left calf
         rclcpp::Publisher<geometry_msgs::msg::Wrench>::SharedPtr pub_calf_right_;   // Publishing antitorque to right calf
 
-        void input_callback();
+        void des_state_callback();
         void ekf_callback();
-        void com_callback();
+        void eq_callback();
+        void hr_callback();
+
         void output_callback();
 
         rclcpp::TimerBase::SharedPtr timer_;
@@ -53,12 +58,6 @@ class LqrVybController : public rclcpp::Node {
 
         const float wheel_left_factor = 0.001043224f;
         const float wheel_right_factor = 0.000857902f;
-
-        float theta_d;
-        float theta_hat;
-        float theta_dot_hat;
-        float vel_hat;
-        float psi_dot_hat;
 
         Eigen::Vector4f x;
         Eigen::Vector4f x_d;

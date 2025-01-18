@@ -120,7 +120,7 @@ void PowCore::core_init(){
             4e-5f, 1e-4f, 4e-5f, 1e-6f).finished());
 
 }
-
+//////////////////////////////////////////////////////////////////////////// call back functions of pow_core node
 void PowCore::imu_callback(const sensor_msgs::msg::Imu::SharedPtr msg){
     flag_ekf = true;
     z.block<6, 1>(0, 0) << msg->linear_acceleration.x, msg->linear_acceleration.y, msg->linear_acceleration.z, msg->angular_velocity.x, msg->angular_velocity.y, msg->angular_velocity.z;
@@ -149,11 +149,21 @@ void PowCore::joystick_callback(){
 }
 
 void PowCore::output_callback(){
+    // if subscribed input u of vyb controller came,
+
+    estimate_state();
+    //sethr
+    // if h_d and phi_d command came, 
     calculate_com_and_inertia();
     get_theta_eq();
     //x_d(0) updated in this moment
+
+    // publish WbrHR info to vyb controller and hr controller
+    // publish x_d and x to vyb controller
+    // publish theta_eq
+    // u_prev = u;
 }
-////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////// private functions
 void PowCore::calculate_com_and_inertia(){
     solve_inverse_kinematics();
     solve_forward_kinematics();
@@ -261,11 +271,6 @@ void PowCore::solve_forward_kinematics() {
 
 void PowCore::get_theta_eq(){
     theta_eq = atan(-p_bcom(0) / (h + p_bcom(2)));
-}
-
-void PowCore::get_theta_hips(){
-    // returned theta_hips 
-    // publish theta_hips to HR_controller
 }
 
 bool PowCore::prepare_state_prediction(){
@@ -422,13 +427,12 @@ void PowCore::calculate_fx(){
     fx.block<3, 1>(1, 0) = -M_inv * (dM_dtheta * M_inv * (-nle + B * u) + (dnle_dtheta));
     fx.block<3, 3>(1, 1) = -M_inv * dnle_dqdot;
 }
-
+////////////////////////////////////////////////////////////////
 bool PowCore::estimate_state() {
     if (!predict()) {
       return false;
     }
     update();
-    x_ = x;
     return true;
 }
 

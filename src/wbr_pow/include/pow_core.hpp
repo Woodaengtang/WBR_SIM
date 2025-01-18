@@ -5,6 +5,7 @@
 #include <vector>
 #include <chrono>
 #include <eigen3/Eigen/Dense>
+// #include <Eigen/Dense>
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 #include "geometry_msgs/msg/wrench.hpp"
@@ -95,7 +96,6 @@ class PowCore : public rclcpp::Node {
         Eigen::Matrix<float, 8, 1> z, h_obs;   // measurement
 
         void get_theta_eq();
-        Eigen::Vector2f get_theta_hips()
         bool prepare_state_prediction();
         void prepare_calculate();
         void calculate_M();

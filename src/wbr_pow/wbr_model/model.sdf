@@ -749,7 +749,7 @@
         <namespace>main_body_force</namespace>
         <force_frame>link</force_frame>
       </plugin>
-
+    
     </model>
   </world>
 </sdf>

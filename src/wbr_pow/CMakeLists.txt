@@ -27,9 +27,10 @@ add_executable(wbr_state_talker src/wbr_state_talker.cpp)
 ament_target_dependencies(wbr_state_talker rclcpp std_msgs sensor_msgs)
 
 rosidl_generate_interfaces(wbr_pow
-  "msg/WbrState.msg"
+  "WbrDesState.msg"
+  "WbrEstState.msg"
+  "WbrPitchEq.msg"
   "msg/WbrControl.msg"
-  "msg/WbrComCal.msg"
   "msg/WbrHR.msg"
   DEPENDENCIES std_msgs
 )

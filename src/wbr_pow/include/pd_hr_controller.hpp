@@ -2,7 +2,8 @@
 #define PD_HIP_SERVO_CONTROLLER_HPP
 
 #include <iostream>
-#include <Eigen/Dense>
+#include <eigen3/Eigen/Dense>
+// #include <Eigen/Dense>
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 #include "geometry_msgs/msg/wrench.hpp"

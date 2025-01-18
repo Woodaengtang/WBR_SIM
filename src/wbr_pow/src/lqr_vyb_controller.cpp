@@ -2,11 +2,11 @@
 
 LqrVybController::LqrVybController() : Node("lqr_vyb_controller") {
     initialize_gain_set();
-    sub_input_ = this->create_subscription<std_msgs::msg::WbrControl>(
-        "topic_name_later", 10, std::bind(&LqrVybController::input_callback, this, std::placeholders::_1));
-    sub_ekf_ = this->create_subscription<std_msgs::msg::WbrState>(
+    sub_ref_ = this->create_subscription<std_msgs::msg::WbrDesState>(
+        "topic_name_later", 10, std::bind(&LqrVybController::des_state_callback, this, std::placeholders::_1));
+    sub_ekf_ = this->create_subscription<std_msgs::msg::WbrEstState>(
         "topic_name_later", 10, std::bind(&LqrVybController::ekf_callback, this, std::placeholders::_1));
-    sub_com_ = this->create_subscription<std_msgs::msg::WbrComCal>(
+    sub_eq_ = this->create_subscription<std_msgs::msg::WbrPitchEq>(
         "topic_name_later", 10, std::bind(&LqrVybController::com_callback, this, std::placeholders::_1));
     pub_wheel_left_ = this->create_publisher<geometry_msgs::msg::Wrench>("/wheel_left_force/gazebo_ros_force", 10);
     pub_wheel_right_ = this->create_publisher<geometry_msgs::msg::Wrench>("/wheel_right_force/gazebo_ros_force", 10);
@@ -63,23 +63,15 @@ void LqrVybController::initialize_gain_set(){
 }
 
 
-void LqrVybController::input_callback(const std_msgs::msg::WbrControl::SharedPtr msg) {
-    vel_d = msg->v_d;
-    yaw_rate_d = msg->yaw_rate_d;
-    h_d = msg->h_d;
-    phi_d = msg->phi_d;
-    x_d << vel_d, yaw_rate_d, h_d, phi_d;
+void LqrVybController::des_state_callback(const std_msgs::msg::WbrDesState::SharedPtr msg) {
+  x_d << msg->pitch_d, msg->pitch_rate_d, vel_d, yaw_rate_d;
 }
 
-void LqrVybController::ekf_callback(const std_msgs::msg::WbrState::SharedPtr msg) {
-    theta_hat = msg->theta;
-    theta_dot_hat = msg->theta_dot;
-    vel_hat = msg->vel;
-    psi_dot_hat = msg->psi_dot;
-    x << theta_hat, theta_dot_hat, vel_hat, psi_dot_hat;
+void LqrVybController::ekf_callback(const std_msgs::msg::WbrEstState::SharedPtr msg) {
+    x << msg->pitch, msg->pitch_rate, msg->vel, msg->yaw_rate;
 }
 
-void LqrVybController::com_callback(const std_msgs::msg::WbrComCal::SharedPtr msg) {
+void LqrVybController::eq_callback(const std_msgs::msg::WbrPitchEq::SharedPtr msg) {
     theta_eq = msg->theta_eq;
 }
 
@@ -116,7 +108,7 @@ void LqrVybController::gain_computation(const float h){
     }
 }
 
-void LqrVybController::input_computation(geometry_msgs::msg::Wrench &wr_msg_, geometry_msgs::msg::Wrench &wl_msg_) {
+void LqrVybController::input_computation(geometry_msgs::msg::Wrench::SharedPtr wr_msg_, geometry_msgs::msg::Wrench::SharedPtr wl_msg_) {
     wheel_inputs = LQR_gain * (x_d - x);
     // Input saturation
     for (int j = 0; j < 2; j++) {
@@ -126,38 +118,38 @@ void LqrVybController::input_computation(geometry_msgs::msg::Wrench &wr_msg_, ge
         wheel_inputs(j) = -saturation;
       }
     }
-    wr_msg_.force.x = 0.0;
-    wr_msg_.force.y = 0.0;
-    wr_msg_.force.z = 0.0;
-    wr_msg_.torque.x = 0.0;
-    wr_msg_.torque.y = wheel_inputs(0);
-    wr_msg_.torque.z = 0.0;
+    wr_msg_->force.x = 0.0;
+    wr_msg_->force.y = 0.0;
+    wr_msg_->force.z = 0.0;
+    wr_msg_->torque.x = 0.0;
+    wr_msg_->torque.y = wheel_inputs(0);
+    wr_msg_->torque.z = 0.0;
 
-    wl_msg_.force.x = 0.0;
-    wl_msg_.force.y = 0.0;
-    wl_msg_.force.z = 0.0;
-    wl_msg_.torque.x = 0.0;
-    wl_msg_.torque.y = wheel_inputs(1);
-    wl_msg_.torque.z = 0.0;
+    wl_msg_->force.x = 0.0;
+    wl_msg_->force.y = 0.0;
+    wl_msg_->force.z = 0.0;
+    wl_msg_->torque.x = 0.0;
+    wl_msg_->torque.y = wheel_inputs(1);
+    wl_msg_->torque.z = 0.0;
 }
 
-void LqrVybController::antitorque_computation(const geometry_msgs::msg::Wrench &wr_msg_, 
-                                              const geometry_msgs::msg::Wrench &wl_msg_,
-                                              geometry_msgs::msg::Wrench &cr_msg_, 
-                                              geometry_msgs::msg::Wrench &cl_msg_) {
-    cr_msg_.force.x = 0.0;
-    cr_msg_.force.y = 0.0;
-    cr_msg_.force.z = 0.0;
-    cr_msg_.torque.x = 0.0;
-    cr_msg_.torque.y = -wl_msg_.torque.y;
-    cr_msg_.torque.z = 0.0;
+void LqrVybController::antitorque_computation(const geometry_msgs::msg::Wrench::SharedPtr wr_msg_, 
+                                              const geometry_msgs::msg::Wrench::SharedPtr wl_msg_,
+                                              geometry_msgs::msg::Wrench::SharedPtr cr_msg_, 
+                                              geometry_msgs::msg::Wrench::SharedPtr cl_msg_) {
+    cr_msg_->force.x = 0.0;
+    cr_msg_->force.y = 0.0;
+    cr_msg_->force.z = 0.0;
+    cr_msg_->torque.x = 0.0;
+    cr_msg_->torque.y = -wl_msg_->torque.y;
+    cr_msg_->torque.z = 0.0;
 
-    cl_msg_.force.x = 0.0;
-    cl_msg_.force.y = 0.0;
-    cl_msg_.force.z = 0.0;
-    cl_msg_.torque.x = 0.0;
-    cl_msg_.torque.y = -wr_msg_.torque.y;
-    cl_msg_.torque.z = 0.0;
+    cl_msg_->force.x = 0.0;
+    cl_msg_->force.y = 0.0;
+    cl_msg_->force.z = 0.0;
+    cl_msg_->torque.x = 0.0;
+    cl_msg_->torque.y = -wr_msg_->torque.y;
+    cl_msg_->torque.z = 0.0;
 }
 
 
