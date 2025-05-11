@@ -268,9 +268,6 @@
         <collision name="collision">
           <pose>0 0 0 1.5707963 0 0</pose>
           <geometry>
-            <!-- <mesh>
-              <uri>meshes/Wheel_Right_Collision.stl</uri>
-            </mesh> -->
             <cylinder>
               <radius>0.0762</radius>
               <length>0.030</length>
@@ -287,7 +284,7 @@
         </collision>
         <inertial>
           <mass>0.21411770281</mass>
-          <pose>-0.00000761 0.48438625 -0.00000031 0 0 0</pose>
+          <pose>0 0 0 0 0 0</pose>
           <inertia>
             <ixx>0.000334104602957420</ixx>
             <ixy>-0.0000000006922620</ixy>
@@ -450,9 +447,6 @@
         <collision name="collision">
           <pose>0 0 0 1.5707963 0 0</pose>
           <geometry>
-            <!-- <mesh>
-              <uri>meshes/Wheel_Left_Collision.stl</uri>
-            </mesh> -->
             <cylinder>
               <radius>0.0762</radius>
               <length>0.030</length>
@@ -469,14 +463,14 @@
         </collision>
         <inertial>
           <mass>0.23711770281</mass>
-          <pose>-0.00000687 0.43740164 -0.00000028 0 0 0</pose>
+          <pose>0 0 0 0 0 0</pose>
           <inertia>
-            <ixx>0.000377169502363060</ixx>
-            <ixy>-0.0000000006845310</ixy>
-            <ixz>-0.0000000001146860</ixz>
-            <iyy>0.000723999028075260</iyy>
-            <iyz>0.0000000000062050</iyz>
-            <izz>0.000377169522061000</izz>
+            <ixx>0.000334104602957420</ixx>
+            <ixy>-0.0000000006922620</ixy>
+            <ixz>-0.0000000000451200</ixz>
+            <iyy>0.000640742795079830</iyy>
+            <iyz>0.0000000000059870</iyz>
+            <izz>0.000334104655850370</izz>
           </inertia>
         </inertial>
       </link>
